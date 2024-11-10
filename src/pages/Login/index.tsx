@@ -1,19 +1,19 @@
-import { useForm } from "react-hook-form";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import { defaultValues, IFormLogin } from "./types";
+import { Container, ContainerCadastro, ContainerLogin, EsqueceuText, Title, } from "./styles";
+import logo from "../../assets/logo.png";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
-import { defaultValues, IFormLogin } from "./types";
-
 const schema = yup
   .object({
-    email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
+    email: yup.string().email("Email inválido!").required("Campo obrigatório!"),
     password: yup
       .string()
-      .min(6, "No minimo 6 caracteres")
-      .required("Campo obrigatório"),
+      .min(6, "No mínimo 6 caracteres")
+      .required("Campo obrigatório!"),
   })
   .required();
 
@@ -21,7 +21,7 @@ const Login = () => {
   const {
     control,
     formState: { errors, isValid },
-  } = useForm<IFormLogin>({
+  } = useForm<IFormLogin> ({
     resolver: yupResolver(schema),
     mode: "onBlur",
     defaultValues,
@@ -29,30 +29,32 @@ const Login = () => {
   });
 
   return (
-    <Container>
-      <LoginContainer>
-        <Column>
+    <>
+      <Container>
+        <ContainerCadastro>
+          <img src={logo} />
+        </ContainerCadastro>
+        <ContainerLogin>
           <Title>Login</Title>
-          <Spacing />
           <Input
             name="email"
             placeholder="Email"
             control={control}
-            errorMessage={errors?.email?.message}
+            errorMesage={errors?.email?.message}
           />
-          <Spacing />
           <Input
             name="password"
-            type="password"
             placeholder="Senha"
             control={control}
-            errorMessage={errors?.password?.message}
+            errorMesage={errors?.password?.message}
           />
-          <Spacing />
-          <Button title="Entrar" />
-        </Column>
-      </LoginContainer>
-    </Container>
+          {isValid === true ? <Button title="Entrar" variant="entrar" /> : null}
+          
+
+          <EsqueceuText>Equeceu sua senha?</EsqueceuText>
+        </ContainerLogin>
+      </Container>
+    </>
   );
 };
 
