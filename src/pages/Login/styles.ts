@@ -1,51 +1,61 @@
-import styled from 'styled-components';
-
-
+import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 100%; 
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
+  position: relative;
 
-export const LoginContainer = styled.div`
-    width: 100%;
-    max-width: 420px;
-    background-color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-    border-radius: 8px;
-    padding: 20px;
+  font-family: "Crimson Text", serif;
+`;
 
-    flex:1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-`
+export const ContainerCadastro = styled.div`
+  width: 500px;
+  height: 470px;
+  background-color: #023047;
+  border-radius: 40px;
 
-export const Title = styled.h1`
-    font-size: 42px;
-    font-weight: 700;
-    color: #81259D;
-`
+  position: relative;
+  z-index: 2; 
+  margin-right: -65px; 
 
-export const Row = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-export const Column = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-`
-export const Spacing = styled.div`
-    margin: 10px 0;
-`
+  img{
+    width: 250px;
+  }
+`;
 
+export const ContainerLogin = styled.div`
+  width: 500px;
+  height: 470px;
+  background-color: #ffb703;
+  border-radius: 40px;
+ 
+  position: relative; 
+  
+  z-index: 1; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Title = styled.h2`
+  color: #FFFFFF;
+  font-size: 34px;
+`;
+
+export const EsqueceuText = styled.p`
+  color: #FFFFFF;
+  font-size: 14px;
+`;
